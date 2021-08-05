@@ -15,4 +15,5 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
+      - aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 261650959426.dkr.ecr.eu-west-1.amazonaws.com
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
