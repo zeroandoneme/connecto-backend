@@ -3,8 +3,8 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region eu-west-1 | docker login --username zn1docker --password JGUr9w3c48HT4auP
+      - echo Logging in to Docker Hub...
+      - aws ecr get-login-password --region eu-west-1 | docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
   build:
     commands:
       - echo Build started on `date`
@@ -14,6 +14,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Pushing the Docker images...
+      - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 261650959426.dkr.ecr.eu-west-1.amazonaws.com
+      - echo Pushing the Docker images...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
