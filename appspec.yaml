@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition: "arn:aws:ecs:eu-west-1:261650959426:task-definition/ECSStackConnectoTaskDefId10696236:1"
         LoadBalancerInfo:
-          ContainerName: "connecto-container"
+          ContainerName: "connecto-connecto-v2"
           ContainerPort: 5000
